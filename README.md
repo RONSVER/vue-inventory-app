@@ -1,0 +1,1 @@
+# vue-inventory-app
