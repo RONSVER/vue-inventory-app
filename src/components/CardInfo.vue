@@ -33,7 +33,7 @@ import SkeletonLoader from "./SkeletonLoader.vue";
   border: 1px solid #4a4949;
   border-radius: 20px;
   padding: 16px;
-
+  height: 523px;
   &__image {
     padding: 15px;
   }
