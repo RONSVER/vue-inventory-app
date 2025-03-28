@@ -19,12 +19,21 @@ export const useInventoryStore = defineStore("inventory", {
     updateCube(index: number, count: number, active: boolean) {
       this.cubes[index].count = count;
       this.cubes[index].active = active;
-      this.syncToLocalStorage();
+
+      if (this.cubes[index].count <= 0) {
+        this.removeCube(index);
+      } else {
+        this.syncToLocalStorage();
+      }
     },
     swapCubes(index1: number, index2: number) {
       const temp = this.cubes[index1];
       this.cubes[index1] = this.cubes[index2];
       this.cubes[index2] = temp;
+      this.syncToLocalStorage();
+    },
+    removeCube(index: number) {
+      this.cubes.splice(index, 1);
       this.syncToLocalStorage();
     },
     syncToLocalStorage() {
