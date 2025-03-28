@@ -1,6 +1,5 @@
 <template>
   <img
-    class="adsasd"
     src="../assets/CubeItemOne.png"
     style="width: 54px; height: 54px; background-color: #1a1a1a"
   />
