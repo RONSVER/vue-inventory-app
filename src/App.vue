@@ -1,3 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Inventory from "./components/Inventory.vue";
+</script>
 
-<template></template>
+<template>
+  <Inventory />
+</template>
