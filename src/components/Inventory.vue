@@ -2,6 +2,7 @@
 import { onMounted, ref } from "vue";
 import { useInventoryStore } from "../stores/useInventoryStore ";
 import Cube from "./Cube.vue";
+import CardInfo from "./CardInfo.vue";
 
 const inventoryStore = useInventoryStore();
 const draggedCubeIndex = ref<number | null>(null);
@@ -39,24 +40,27 @@ const handleDrop = (event: DragEvent, index: number) => {
 </script>
 
 <template>
-  <div class="inventory">
-    <div class="grid">
-      <div
-        class="cube"
-        v-for="(cube, index) in inventoryStore.cubes"
-        :key="index"
-        @click="handleClick(index)"
-        @dragover.prevent
-        @drop="handleDrop($event, index)"
-      >
+  <div style="display: flex; gap: 50px">
+    <CardInfo />
+    <div class="inventory">
+      <div class="grid">
         <div
-          class="cube-content"
-          :draggable="true"
-          @dragstart="handleDragStart($event, index)"
-          @dragend="handleDragEnd($event)"
+          class="cube"
+          v-for="(cube, index) in inventoryStore.cubes"
+          :key="index"
+          @click="handleClick(index)"
+          @dragover.prevent
+          @drop="handleDrop($event, index)"
         >
-          <Cube v-show="cube.active" class="button-press fadeIn" />
-          <span class="counter">{{ cube.count }}</span>
+          <div
+            class="cube-content"
+            :draggable="true"
+            @dragstart="handleDragStart($event, index)"
+            @dragend="handleDragEnd($event)"
+          >
+            <Cube v-show="cube.active" class="button-press fadeIn" />
+            <span class="counter">{{ cube.count }}</span>
+          </div>
         </div>
       </div>
     </div>
